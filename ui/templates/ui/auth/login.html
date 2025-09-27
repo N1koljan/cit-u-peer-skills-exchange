@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back - CIT-U Skills Exchange</title>
+    <link rel="stylesheet" href="{% static 'ui/css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your CIT-U Skills Exchange account</p>
+        </div>
+
+        <!-- Django messages framework integration -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Django form integration -->
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="email_or_username">Email or Username</label>
+                <input
+                    type="text"
+                    id="email_or_username"
+                    name="email_or_username"
+                    placeholder="Enter your email or username"
+                    value="{{ request.POST.email_or_username|default:'' }}"
+                    required
+                >
+                {% if form.email_or_username.errors %}
+                    <div class="field-error">
+                        {% for error in form.email_or_username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+                {% if form.password.errors %}
+                    <div class="field-error">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <div class="signup-link">
+                Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

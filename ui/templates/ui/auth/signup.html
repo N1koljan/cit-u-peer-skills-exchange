@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join CIT-U Skills Exchange</title>
+    <link rel="stylesheet" href="{% static 'ui/css/signup.css' %}">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="header">
+            <h1>Join CIT-U Skills Exchange</h1>
+            <p>Create your account to start sharing and learning skills</p>
+        </div>
+
+        <!-- Django will handle this form when submitted -->
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label for="schoolId">School ID</label>
+                    <input type="text" id="schoolId" name="schoolId" placeholder="Enter your school ID" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="">Select your department</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="information-technology">Information Technology</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="business">Business Administration</option>
+                    <option value="education">Education</option>
+                    <option value="arts-sciences">Arts and Sciences</option>
+                    <option value="architecture">Architecture</option>
+                    <option value="nursing">Nursing</option>
+                    <option value="maritime">Maritime Studies</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="signup-btn">Sign Up</button>
+
+            <div class="login-link">
+                Already have an account? <a href="{% url 'login' %}">Login here</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
