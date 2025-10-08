@@ -1,0 +1,60 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile - CIT-U Skills Exchange{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'ui/css/editProfile.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="title">Edit Profile</h1>
+    <p class="subtitle">Update your account information and preferences</p>
+
+    <div class="profile-header">
+      <div class="profile-pic-wrapper">
+        <div class="profile-pic">
+            <img src="https://via.placeholder.com/120" alt="Profile Picture">
+        </div>
+        <label for="file-upload" class="camera-icon">
+            <i class="fa-solid fa-camera"></i>
+        </label>
+            <input id="file-upload" type="file" accept="image/*">
+      </div>
+
+      <div class="profile-form">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <div class="buttons">
+          <button class="save-btn">Save Changes</button>
+          <button class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-box">
+        <h3>Contact Information</h3>
+        <div class="field"><i class="fa-solid fa-envelope"></i> <input type="email" placeholder="Email"></div>
+        <div class="field"><i class="fa-solid fa-phone"></i> <input type="text" placeholder="Phone"></div>
+        <div class="field"><i class="fa-solid fa-location-dot"></i> <input type="text" placeholder="Location"></div>
+      </div>
+
+      <div class="info-box">
+        <h3>Academic Information</h3>
+        <div class="field"><i class="fa-solid fa-graduation-cap"></i> <input type="text" placeholder="Course"></div>
+        <div class="field"><i class="fa-solid fa-calendar"></i> <input type="text" placeholder="Year Level"></div>
+      </div>
+    </div>
+
+    <div class="about-me">
+      <h3>About Me</h3>
+      <textarea placeholder="Write something about yourself..."></textarea>
+    </div>
+
+    <footer>
+      <p>Need help? Contact our support team at <a href="mailto:skills.exchange@cit.edu">skills.exchange@cit.edu</a></p>
+    </footer>
+  </div>
+{% endblock %}

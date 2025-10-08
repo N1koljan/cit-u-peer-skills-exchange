@@ -1,0 +1,62 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+
+
+{% block title %}My Profile - CIT-U Skills Exchange{% endblock %}
+
+{% block styles %}
+
+  <link rel="stylesheet" href="{% static 'ui/css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="profile-container">
+    <h1 class="title">My Profile</h1>
+    <p class="subtitle">Manage your account information and preferences</p>
+
+    <!-- Header Section -->
+    <div class="profile-header">
+      <div class="profile-pic-container">
+        <!-- This image source will be replaced by the user's actual profile picture -->
+        <img src="{% static 'ui/images/default_avatar.png' %}" alt="Profile Picture" class="profile-pic">
+        <input type="file" id="upload-pic" accept="image/*" style="display:none;">
+      </div>
+      <div class="profile-info">
+        <!-- These will be filled by Django with user data -->
+        <h2 class="name"></h2>
+        <p class="email"></p>
+        <p class="details"></p>
+      </div>
+      <button class="edit-btn">Edit Profile</button>
+    </div>
+
+    <!-- Info Boxes -->
+    <div class="info-section">
+      <div class="info-box">
+        <h3><i class="fa-solid fa-user"></i> Contact Information</h3>
+        <p><i class="fa-solid fa-envelope"></i> <span class="value"></span></p>
+        <p><i class="fa-solid fa-phone"></i> <span class="value"></span></p>
+        <p><i class="fa-solid fa-location-dot"></i> <span class="value"></span></p>
+      </div>
+
+      <div class="info-box">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Academic Information</h3>
+        <p><i class="fa-solid fa-book"></i> <span class="value"></span></p>
+        <p><i class="fa-solid fa-calendar"></i> <span class="value"></span></p>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="about-section">
+      <h3>About Me</h3>
+      <p class="about-text"></p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Need help? Contact our support team at <span class="support-email">skills.exchange@cit.edu</span></p>
+    </div>
+  </div>
+{% endblock %}
+
