@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Back - CIT-U Skills Exchange</title>
     <link rel="stylesheet" href="{% static 'ui/css/login.css' %}">
+    <style>
+        /* A little style to make the error messages look good */
+        .form-errors, .field-error {
+            color: #c0392b; /* A nice red color */
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fdd; /* Light red background */
+            border: 1px solid #c0392b;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .message.success {
+             color: #27ae60; /* Green */
+             background-color: #eafaf1;
+             border: 1px solid #27ae60;
+             padding: 10px;
+             border-radius: 4px;
+             margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
@@ -14,7 +34,7 @@
             <p>Sign in to your CIT-U Skills Exchange account</p>
         </div>
 
-        <!-- Django messages framework integration -->
+        <!-- Django messages framework (e.g., for success after signup) -->
         {% if messages %}
             {% for message in messages %}
                 <div class="message {{ message.tags }}">
@@ -23,18 +43,27 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Django form integration -->
+        <!-- Main Login Form -->
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
 
+            <!-- This will display errors like "Invalid username/email or password" -->
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="form-group">
-                <label for="email_or_username">Email or Username</label>
+                <label for="id_email_or_username">Email or Username</label>
                 <input
                     type="text"
-                    id="email_or_username"
+                    id="id_email_or_username"
                     name="email_or_username"
                     placeholder="Enter your email or username"
-                    value="{{ request.POST.email_or_username|default:'' }}"
+                    value="{{ form.email_or_username.value|default:'' }}"
                     required
                 >
                 {% if form.email_or_username.errors %}
@@ -47,10 +76,10 @@
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="id_password">Password</label>
                 <input
                     type="password"
-                    id="password"
+                    id="id_password"
                     name="password"
                     placeholder="Enter your password"
                     required

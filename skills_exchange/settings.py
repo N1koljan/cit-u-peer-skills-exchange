@@ -1,46 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import psycopg2
-from dotenv import load_dotenv
-import os
 
-# Load environment variables from .env
-load_dotenv()
-
-# Fetch variables
-USER = os.getenv("user")
-PASSWORD = os.getenv("password")
-HOST = os.getenv("host")
-PORT = os.getenv("port")
-DBNAME = os.getenv("dbname")
-
-# Connect to the database
-try:
-    connection = psycopg2.connect(
-        user=USER,
-        password=PASSWORD,
-        host=HOST,
-        port=PORT,
-        dbname=DBNAME
-    )
-    print("Connection successful!")
-
-    # Create a cursor to execute SQL queries
-    cursor = connection.cursor()
-
-    # Example query
-    cursor.execute("SELECT NOW();")
-    result = cursor.fetchone()
-    print("Current Time:", result)
-
-    # Close the cursor and connection
-    cursor.close()
-    connection.close()
-    print("Connection closed.")
-
-except Exception as e:
-    print(f"Failed to connect: {e}")
 # ---------------------------
 # Base directory
 # ---------------------------
@@ -50,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables
 # ---------------------------
 # Change "config" to the folder where your .env file is located
-dotenv_path = BASE_DIR / "config" / ".env"
+dotenv_path = BASE_DIR / ".env"
 load_dotenv(dotenv_path)
 
 # ---------------------------
@@ -118,6 +79,14 @@ WSGI_APPLICATION = 'skills_exchange.wsgi.application'
 # ---------------------------
 # Database configuration (Supabase PostgreSQL)
 # ---------------------------
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -160,3 +129,11 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
 # ---------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'core.CustomUser'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_URL = '/login/'
