@@ -1,1 +1,26 @@
+Django
+##########
+*.log
+*.pot
+*.pyc
+pycache/
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+Virtual Environment
+#####################
 .env
+venv/
+env/
+
+IDE and Editor
+##################
+.idea/
+.vscode/
+
+Operating System
+####################
+.DS_Store
+Thumbs.db

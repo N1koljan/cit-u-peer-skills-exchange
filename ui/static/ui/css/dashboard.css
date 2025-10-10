@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+main {
+  padding-top: 1px;
+}
+
+h1 {
+  margin: 20px;
+  color: #660000;
+}
+
+p {
+  margin: 0 20px 20px;
+  color: #666;
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px;
+}
+
+.card {
+  background: #fff7e6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-top i {
+  font-size: 18px;
+  color: #800000;
+}
+
+.card h2 {
+  margin: 10px 0 0;
+  color: #800000;
+}
+
+/* Activity & Sessions */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px;
+}
+
+.box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.box h3 i {
+  margin-right: 8px;
+}
+
+.red { color: #800000; }
+.orange { color: #ff9900; }
+
+.placeholder {
+  padding: 15px;
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  background: #f3f3f3;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn.yellow {
+  background: #ffcc00;
+  color: #000;
+}
+
+.btn.yellow:hover {
+  background: #e6b800;
+}
+
+.btn.red {
+  background: #cc0000;
+  color: #fff;
+}
+
+.btn.red:hover {
+  background: #a00000;
+}
+
+.btn.outline {
+  background: #fff;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 20px;
+  flex: 1;
+  border-radius: 10px;
+}
+
+.btn.outline:hover {
+  border-color: #800000;
+  color: #800000;
+}
+
+/* Quick Actions */
+.quick-actions {
+  margin: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.quick-actions h3 {
+  margin-bottom: 15px;
+  color: #800000;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.actions .btn p {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}

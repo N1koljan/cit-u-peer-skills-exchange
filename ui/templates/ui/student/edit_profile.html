@@ -1,0 +1,75 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile - CIT-U Skills Exchange{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'ui/css/editProfile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="title">Edit Profile</h1>
+  <p class="subtitle">Update your account information and preferences</p>
+
+  <!-- IMPORTANT: Add method="post" and enctype -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} <!-- Security token is required! -->
+
+    <div class="profile-header">
+      <div class="profile-pic-wrapper">
+        <div class="profile-pic">
+          {% if user.profile_picture %}
+            <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+          {% else %}
+            <img src="https://via.placeholder.com/120" alt="Profile Picture">
+          {% endif %}
+        </div>
+        <label for="id_profile_picture" class="camera-icon">
+            <i class="fa-solid fa-camera"></i>
+        </label>
+        {{ form.profile_picture }} <!-- This is the hidden file input -->
+      </div>
+
+      <div class="profile-form">
+        {{ form.first_name }}
+        {{ form.last_name }}
+        {{ form.email }}
+        <div class="buttons">
+          <button type="submit" class="save-btn">Save Changes</button>
+          <a href="{% url 'profile' %}" class="cancel-btn">Cancel</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-box">
+        <h3>Contact Information</h3>
+        <div class="field"><i class="fa-solid fa-envelope"></i> {{ form.email }}</div>
+        <div class="field"><i class="fa-solid fa-location-dot"></i> {{ form.school_id }}</div>
+      </div>
+
+      <div class="info-box">
+        <h3>Academic Information</h3>
+        <div class="field"><i class="fa-solid fa-graduation-cap"></i> {{ form.department }}</div>
+      </div>
+    </div>
+
+    <div class="about-me">
+      <h3>About Me</h3>
+      {{ form.bio }}
+    </div>
+  </form> {# End of the form #}
+
+  <footer>
+    <p>Need help? Contact our support team at <a href="mailto:skills.exchange@cit.edu">skills.exchange@cit.edu</a></p>
+  </footer>
+</div>
+
+<style>
+  /* Small CSS fix to hide the ugly default file input */
+  #id_profile_picture {
+    display: none;
+  }
+</style>
+{% endblock %}

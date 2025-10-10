@@ -2,33 +2,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{% block title %}CIT-U Skills Exchange{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'ui/css/style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- This will be the default title, which child templates can override -->
+  <title>{% block title %}CIT-U Peer-to-Peer Skills Exchange{% endblock %}</title>
+  <!-- This loads the main stylesheet for the navbar and body -->
+  <link rel="stylesheet" href="{% static 'ui/css/base.css' %}">
+  <!-- This is the placeholder where page-specific stylesheets will be inserted -->
+  {% block styles %}
+  {% endblock %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand">CIT-U Peer-to-Peer Skills Exchange</h1>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="#features">Features</a>
-        <a href="#get-started">Get Started</a>
-      </nav>
-    </div>
+  <header>
+    <div class="logo">CIT-U Peer to Peer Skills Exchange</div>
+    <nav>
+      <a href="{% url 'dashboard' %}" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="#"><i class="fa-solid fa-book"></i> My Skills</a>
+      <a href="#"><i class="fa-solid fa-list"></i> Requests</a>
+      <a href="#"><i class="fa-solid fa-search"></i> Find Skills</a>
+      <a href="#"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
+      <a href="#"><i class="fa-solid fa-comment"></i> Feedback</a>
+      <a href="#"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
   </header>
 
+  <!-- This is the main content area where other pages will insert their content -->
   <main>
-    {% block content %}{% endblock %}
+    {% block content %}
+      <!-- The content from dashboard.html will go here -->
+    {% endblock %}
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ now.year }} CIT-U Skills Exchange</p>
-    </div>
-  </footer>
-
-  <script src="{% static 'landing/js/script.js' %}"></script>
 </body>
 </html>

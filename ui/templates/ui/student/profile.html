@@ -1,0 +1,74 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+
+
+{% block title %}My Profile - CIT-U Skills Exchange{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'ui/css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="profile-container">
+    <h1 class="title">My Profile</h1>
+    <p class="subtitle">Manage your account information and preferences</p>
+
+    <!-- Header Section -->
+    <div class="profile-header">
+      <div class="profile-pic-container">
+        <!-- Display user's profile picture or a default one -->
+        {% if user.profile_picture %}
+          <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-pic">
+        {% else %}
+          <img src="{% static 'ui/images/default_avatar.png' %}" alt="Profile Picture" class="profile-pic">
+        {% endif %}
+      </div>
+      <div class="profile-info">
+        <!-- Display full name (if available) or username -->
+        <h2 class="name">{{ user.get_full_name|default:user.username }}</h2>
+        <p class="details">@{{ user.username }}</p>
+      </div>
+      <!-- Link the button to the edit_profile URL name -->
+      <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+    </div>
+
+    <!-- Info Boxes -->
+    <div class="info-section">
+      <div class="info-box">
+        <h3><i class="fa-solid fa-user"></i> Contact Information</h3>
+        <p><i class="fa-solid fa-envelope"></i> <span class="value">{{ user.email }}</span></p>
+        <p><i class="fa-solid fa-phone"></i> <span class="value"></span></p> <!-- Kept blank as requested -->
+        <p><i class="fa-solid fa-location-dot"></i> <span class="value">{{ user.school_id|default:'Not set' }}</span></p>
+      </div>
+
+      <div class="info-box">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Academic Information</h3>
+        <!-- Use get_department_display to show the full name (e.g., "Computer Science") -->
+        <p><i class="fa-solid fa-book"></i> <span class="value">{{ user.get_department_display|default:'Not set' }}</span></p>
+        <p><i class="fa-solid fa-calendar"></i> <span class="value"></span></p> <!-- Kept blank as requested -->
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="about-section">
+      <h3>About Me</h3>
+      <p class="about-text">
+        {% if user.bio %}
+          {{ user.bio }}
+        {% else %}
+          You haven't written a bio yet. Click 'Edit Profile' to add one!
+        {% endif %}
+      </p>
+    </div>
+
+      <div class="sign-out-section" style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'logout' %}" class="sign-out-btn" style="padding: 10px 20px; background-color: #d9534f; color: white; text-decoration: none; border-radius: 5px;">Sign Out</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Need help? Contact our support team at <span class="support-email">skills.exchange@cit.edu</span></p>
+    </div>
+  </div>
+{% endblock %}

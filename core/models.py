@@ -1,8 +1,8 @@
-from django.db import models
+# in core/models.py
 
-# Create your models here.
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
 
 class CustomUser(AbstractUser):
     DEPARTMENT_CHOICES = [
@@ -21,6 +21,8 @@ class CustomUser(AbstractUser):
     school_id = models.CharField(max_length=20, unique=True, blank=True, null=True)
     department = models.CharField(max_length=2, choices=DEPARTMENT_CHOICES, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+
+    bio = models.TextField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return self.username

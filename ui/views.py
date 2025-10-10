@@ -1,10 +1,12 @@
 # In ui/views.py
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from core.forms import CustomSignUpForm
 from core.forms import CustomLoginForm, CustomSignUpForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
+
+from ui.forms import EditProfileForm
 
 
 def home(request):
@@ -13,7 +15,7 @@ def home(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('dashboard')
 
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)
@@ -21,7 +23,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             messages.success(request, f"Welcome back, {user.username}!")
-            return redirect('profile')
+            return redirect('dashboard')
     else:
         form = CustomLoginForm()
 
@@ -46,6 +48,47 @@ def signup_view(request):
 
     return render(request, 'ui/auth/signup.html', {'form': form})
 
+@login_required
 def profile_view(request):
-    return render(request, 'ui/profile.html', {'user': request.user})
+    context = {
+        'user': request.user
+    }
+    return render(request, 'ui/student/profile.html', context)
+
+
+@login_required
+def dashboard_view(request):
+    return render(request, 'ui/student/dashboard.html')
+
+@login_required
+def edit_profile_view(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('profile')
+    else:
+        form = EditProfileForm(instance=request.user)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'ui/student/edit_profile.html', context)
+
+def logout_view(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect('login')
+
+def my_skill_view(request):
+    return render(request, 'ui/student/my_skills.html')
+def request_view(request):
+    return render(request, 'ui/student/request.html')
+def find_skill_view(request):
+    return render(request, 'ui/student/find_skills.html')
+def session_view(request):
+    return render(request, 'ui/student/session.html')
+def skill_view(request):
+    return render(request, 'ui/student/skill.html')
 # --------------------------------
