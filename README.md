@@ -43,7 +43,7 @@ The project scope covers the development of a **responsive web application** acc
 ## Tech Stack Used
 **Frontend:** React.js, Tailwind CSS, HTML  
 **Backend:** Django REST Framework  
-**Database:** PostgreSQL, Supabase
+**Database:** PostgreSQL, Supabase   
 **Other Tools:** Docker, GitHub, Visual Studio Code, Postman, PyCharm  
 
 ---
