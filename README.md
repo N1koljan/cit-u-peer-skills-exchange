@@ -1,16 +1,16 @@
 # CIT-U Peer-to-Peer Skills Exchange Platform
 
-## 📝 Short Description
+## Short Description
 The **CIT-U Peer-to-Peer Skills Exchange Platform** is a web-based system that enables students to exchange and share skills securely within the CIT University community. It allows users to create profiles, list the skills they can offer, request skills from others, and communicate effectively through an integrated system. It encourages collaboration, peer learning, and skill development among students.
 
 ---
 
-## 🎯 Objectives
+## Objectives
 The project aims to develop a functional platform that enables students to exchange skills through secure access, user profiles, and interactive features while ensuring active participation through onboarding and meaningful exchanges during testing. By utilizing available tools, resources, and volunteer participants, the system will remain feasible and realistic within scope. The goal is to deliver a reliable, user-friendly solution that fosters collaboration, knowledge sharing, and personal growth among students — with development and validation completed within the project timeline and strong user satisfaction achieved upon rollout.
 
 ---
 
-## 📚 Scope
+## Scope
 The project scope covers the development of a **responsive web application** accessible via desktop and mobile browsers, featuring:
 - Secure student login  
 - User profile creation  
@@ -27,7 +27,7 @@ The project scope covers the development of a **responsive web application** acc
 
 ---
 
-## 👥 Stakeholders
+## Stakeholders
 | Role | Name | CIT-U Email |
 |------|------|--------------|
 | Product Owner | Michael Grant Libato | michaelgrant.libato@cit.edu |
@@ -40,17 +40,17 @@ The project scope covers the development of a **responsive web application** acc
 
 ---
 
-## 💻 Tech Stack Used
-**Frontend:** React.js, Tailwind CSS  
+## Tech Stack Used
+**Frontend:** React.js, Tailwind CSS, HTML  
 **Backend:** Django REST Framework  
-**Database:** PostgreSQL  
+**Database:** PostgreSQL, Supabase
 **Other Tools:** Docker, GitHub, Visual Studio Code, Postman, PyCharm  
 
 ---
 
-## ⚙️ Setup and Run Instructions
+## Setup and Run Instructions
 
-### 🧩 Prerequisites
+### Prerequisites
 - Python 3.10+  
 - Node.js 18+  
 - PostgreSQL  
@@ -59,12 +59,12 @@ The project scope covers the development of a **responsive web application** acc
 
 ---
 
-### 1️⃣ Clone the Repository
+### Step 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/N1koljan/cit-u-peer-skills-exchange.git
 cd cit-u-peer-skills-exchange
 ```
-2️⃣ Backend Setup (Django)
+Step 2️⃣ Backend Setup (Django)
 ```bash
 cd backend
 python -m venv venv
@@ -77,7 +77,7 @@ python manage.py runserver
 
 Backend runs by default at: http://127.0.0.1:8000/
 ```
-3️⃣ Frontend Setup (React)
+Step 3️⃣ Frontend Setup (React)
 ```bash
 cd frontend
 npm install
@@ -85,7 +85,7 @@ npm start
 
 Frontend runs by default at: http://localhost:3000/
 ```
-4️⃣ Access the Application
+Step 4️⃣ Access the Application
 Open your browser and go to:
 ```bash
 👉 http://localhost:3000
