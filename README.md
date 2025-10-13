@@ -63,8 +63,9 @@ The project scope covers the development of a **responsive web application** acc
 ```bash
 git clone https://github.com/N1koljan/cit-u-peer-skills-exchange.git
 cd cit-u-peer-skills-exchange
-
+```
 2️⃣ Backend Setup (Django)
+```bash
 cd backend
 python -m venv venv
 venv\Scripts\activate      # For Windows
@@ -75,18 +76,20 @@ python manage.py migrate
 python manage.py runserver
 
 Backend runs by default at: http://127.0.0.1:8000/
-
+```
 3️⃣ Frontend Setup (React)
+```bash
 cd frontend
 npm install
 npm start
 
 Frontend runs by default at: http://localhost:3000/
-
+```
 4️⃣ Access the Application
 Open your browser and go to:
+```bash
 👉 http://localhost:3000
-
+```
 🌐 Deployed Link
 If deployed, the live version of the project can be accessed at:
 🔗 https://cit-u-peer-skills-exchange.vercel.app
