@@ -88,8 +88,10 @@ Frontend runs by default at: http://localhost:3000/
 Step 4️⃣ Access the Application
 Open your browser and go to:
 ```bash
-👉 http://localhost:3000
+ http://localhost:3000
 ```
-🌐 Deployed Link
+Deployed Link
 If deployed, the live version of the project can be accessed at:
-🔗 https://cit-u-peer-skills-exchange.vercel.app
+```bash
+ https://cit-u-peer-skills-exchange.vercel.app
+```
